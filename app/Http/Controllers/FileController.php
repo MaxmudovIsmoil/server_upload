@@ -26,6 +26,7 @@ class FileController extends Controller
         return redirect('/file')->with('status', 'file failed to load');
     }
 
+
     public function download()
     {
         $d = storage_path('/file/');
@@ -35,10 +36,12 @@ class FileController extends Controller
         if (!empty($last_file)) {
             $file = storage_path('/file/' . $last_file[0]);
 
-            return response()->download($file);
+            // response()->download($file);
+
+            return $file;
         }
 
-        return '<h2 style="text-align: center; color: red">Not file</h2>';
+        return "Not file";
     }
 
 
